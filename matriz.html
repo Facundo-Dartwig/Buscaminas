@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Buscaminas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
+</head>
+
+<body oncontextmenu="return false">
+  <!-- CSS (Estilos) -->
+  <style>
+    * {
+      transition: all 1s;
+      box-sizing: border-box;
+    }
+
+    body {
+      text-align: center;
+      font-family: calibri;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      background: lightsteelblue;
+    }
+
+    table {
+      background: slategray;
+      margin: 20px auto;
+    }
+
+    td {
+      border: rgba(0, 0, 0, 0.25) 1px solid;
+      text-align: center;
+      font-size: 120%;
+      color: white;
+    }
+  </style>
+
+  <!-- HTML (Estructura) -->
+  <br>
+  <table cellspacing="0" cellpadding="0" id="tablero">
+  </table>
+
+  <!-- JS (Lógica) -->
+  <script>
+    let filas = 20
+    let columnas = 20
+    let lado = 30
+    nuevoJuego()
+
+    function nuevoJuego() {
+      generarTableroHTML() //Gernera la estructura visual de la matriz
+    }
+
+    function generarTableroHTML() {
+      let html = "";
+      for (let f = 0; f < filas; f++) {
+        html += `<tr>`;
+        for (let c = 0; c < columnas; c++) {
+          html += `<td id="celda-${c}-${f}" style="width:${lado}px;height:${lado}px;">`;
+          html += `${c},${f}`;
+          html += `</td>`;
+        }
+        html += `</tr>`;
+      }
+      let tableroHTML = document.getElementById("tablero");
+      tableroHTML.innerHTML = html;
+      tableroHTML.style.width = columnas * lado + "px";
+      tableroHTML.style.height = filas * lado + "px";
+    }
+  </script>
+</body>
+
+</html>
